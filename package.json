@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Tsovinar1991/template_integration.git"
+    "url": ""
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Tsovinar1991/template_integration/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/Tsovinar1991/template_integration#readme",
+  "homepage": "",
   "dependencies": {
     "dotenv": "^8.2.0",
     "ejs": "^3.1.6",
