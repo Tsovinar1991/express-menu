@@ -1,7 +1,9 @@
 const router = require('express').Router();
+const saveMenu = require('../controllers/menu/save_menu.js');
+const formMenu = require('../controllers/menu/form_menu.js');
 
-router.get('/', (req, res)=>{
-    res.render('menu/index', {url: req.originalUrl});
-})
+router.get('/', formMenu);
+router.post('/', saveMenu);
+
 
 module.exports = router;

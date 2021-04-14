@@ -1,0 +1,30 @@
+<% layout('../layout/main') -%>
+<main>
+    <header class="row tm-welcome-section">
+        <h2 class="col-12 text-center tm-section-title">Menu</h2>
+        <p class="col-12 text-center">Total 3 HTML pages are included in this template. Header image has a parallax
+            effect. You can feel free to download, edit and use this TemplateMo layout for your commercial or
+            non-commercial websites.</p>
+    </header>
+    <div class="row tm-gallery">
+        <!-- gallery page 1 -->
+        <div id="tm-gallery-page-pizza" class="tm-gallery-page">
+            <% if (typeof data !== 'undefined'){
+            if(data.length > 0){
+            data.forEach((el)=>{ %>
+            <article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+                <figure>
+                    <img src="/img/gallery/01.jpg" alt="Image" class="img-fluid tm-gallery-img"/>
+                    <figcaption>
+                        <h4 class="tm-gallery-title"><%= el.name %></h4>
+                        <p class="tm-gallery-description"><%= el.short_description %></p>
+                        <p class="tm-gallery-price">$<%= el.price %></p>
+                    </figcaption>
+                </figure>
+            </article>
+
+            <% });}} %>
+
+        </div> <!-- gallery page 1 -->
+    </div>
+</main>
