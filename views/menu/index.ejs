@@ -8,7 +8,7 @@
     <div class="tm-container-inner-2 tm-contact-section">
         <div class="row">
             <div class="col-md-6">
-                <form action="<%= process.env.SITE_URL %>/menu" method="POST" class="tm-contact-form">
+                <form action="<%= process.env.SITE_URL %>/menu" method="POST" class="tm-contact-form" enctype="multipart/form-data">
                     <% if(typeof db_error !== 'undefined'){ %>
                     <div style="color:red">
                         <%= db_error %>
@@ -60,6 +60,9 @@
                                 required
                                 placeholder="Price"
                         />
+                    </div>
+                    <div class="form-group">
+                        <input type="file" id="avatar" name="avatar">
                     </div>
 
                     <div class="form-group tm-d-flex">

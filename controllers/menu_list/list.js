@@ -1,14 +1,14 @@
 const connection = require('../../config/dbConnection.js');
+const menuService = require('../../services/menuService.js');
 
 module.exports = (req, res)=>{
-    let sql = 'SELECT * FROM `menu`';
-    connection.query(sql, function(err, data) {
-            if(err){
-                console.log(err.toString());
+    let{offset=0,limit=10} = req.query;
+        menuService.findAll(limit, offset).then(
+            ([rows,fields]) => {
+                res.render('menu_list/index', {url: req.originalUrl, data:rows });
             }
-
-           res.render('menu_list/index', {url: req.originalUrl, data:data });
-        }
-    );
-
+            )
+        .catch(err=>{
+            console.log(err.toString());
+        });
 }
