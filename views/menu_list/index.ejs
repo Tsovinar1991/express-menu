@@ -34,10 +34,9 @@
     <%
     limit = 4;
     let pages = Math.ceil(count[0].count / limit);
-    console.log(pageNumber);
-    %>
 
 
+    if(pages !== 0){%>
     <div class="d-flex justify-content-center">
         <ul class="pagination">
             <% if(pageNumber === 1){ %>
@@ -63,4 +62,5 @@
 
         </ul>
     </div>
+    <%}%>
 </main>
