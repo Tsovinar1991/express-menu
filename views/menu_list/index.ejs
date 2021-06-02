@@ -1,6 +1,6 @@
 <% layout('../layout/main') -%>
 <main>
-    <header class="row tm-welcome-section">
+    <header class="row  d-flex flex-wrap justm-welcome-section">
         <h2 class="col-12 text-center tm-section-title">Menu</h2>
         <p class="col-12 text-center">Total 3 HTML pages are included in this template. Header image has a parallax
             effect. You can feel free to download, edit and use this TemplateMo layout for your commercial or
@@ -9,12 +9,14 @@
     <div class="row tm-gallery">
         <!-- gallery page 1 -->
         <div id="tm-gallery-page-pizza" class="tm-gallery-page">
-            <% if (typeof data !== 'undefined'){
+            <%
+            if (typeof data !== 'undefined'){
             if(data.length > 0){
             data.forEach((el)=>{ %>
             <article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
                 <figure>
-                    <img style="width:200px; height:150px;object-fit:cover" src="/img/gallery/<%=el.image%> "alt="Image" class="img-fluid tm-gallery-img"/>
+                    <img style="width:200px; height:150px;object-fit:cover" src="/img/gallery/<%= el.image %> "
+                         alt="Image" class="img-fluid tm-gallery-img"/>
                     <figcaption>
                         <h4 class="tm-gallery-title"><%= el.name %></h4>
                         <p class="tm-gallery-description"><%= el.short_description %></p>
@@ -24,7 +26,41 @@
             </article>
 
             <% });}} %>
-
         </div> <!-- gallery page 1 -->
+    </div>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <%
+    limit = 4;
+    let pages = Math.ceil(count[0].count / limit);
+    console.log(pageNumber);
+    %>
+
+
+    <div class="d-flex justify-content-center">
+        <ul class="pagination">
+            <% if(pageNumber === 1){ %>
+                <li class="page-item"><a class="page-link btn disabled" href="">Previous</a></li>
+            <% }else{ %>
+                <li class="page-item"><a class="page-link" href="<%= process.env.SITE_URL %>/menu-list?limit=<%= limit %>&offset=<%= (pageNumber - 1)*limit-limit %>">Prev</a>
+                </li>
+            <% } %>
+
+            <% for(let i = 0 ; i < pages; i++){ %>
+                <li class="page-item <% if(pageNumber === (i + 1)){ %>active<% } %>">
+                    <a class="page-link " href="<%= process.env.SITE_URL %>/menu-list?limit=<%= limit %>&offset=<%= (i + 1)*limit-limit %>"><%= i+1 %></a>
+                </li>
+            <% } %>
+
+            <% if(pageNumber === pages){ %>
+                <li class="page-item"><a class="page-link btn disabled" href="">Next</a></li>
+            <% }else{ %>
+                <li class="page-item">
+                    <a class="page-link" href="<%= process.env.SITE_URL %>/menu-list?limit=<%= limit %>&offset=<%= (pageNumber + 1)*limit-limit %>">Next</a>
+                </li>
+            <% } %>
+
+        </ul>
     </div>
 </main>

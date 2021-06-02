@@ -26,9 +26,15 @@ class MenuService {
     }
 
     findAll(limit, offset) {
-        let sql = `SELECT * FROM menu LIMIT ${limit} OFFSET ${offset}`;
-        return connection.promise()
-            .query(sql);
+        let sql = `SELECT * FROM ${this.tablename} LIMIT ${limit} OFFSET ${offset}`;
+        return connection.promise().query(sql);
+
+    }
+
+
+    findCountAll(){
+        let sql = `SELECT count(*) as count FROM ${this.tablename} `;
+        return connection.promise().query(sql);
 
     }
 
